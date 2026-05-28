@@ -46,7 +46,7 @@ function generateMessage(noCount) {
     "Anh bicc lỗi rồi ạa",
     "Mong bé tha lỗi choo anhh :((",
     "Anhh saii rồi , anhh đáng trách ạ",
-    "Bé đừng giận anhh nữa nhoo",
+    "Bé đừng giận anhh nữa nhoo, tha cho anh dep troai nhó",
     "Anhhh iu bé nhắm nhunnn đóoooo",
   ];
 
