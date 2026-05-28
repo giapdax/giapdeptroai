@@ -9,31 +9,126 @@ html {
 }
 
 body {
-  background-color: #fff0f6;
-  font-family: "Protest Riot", sans-serif;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.95) 0 9rem, transparent 9.2rem),
+    radial-gradient(circle at 82% 12%, rgba(255, 216, 236, 0.95) 0 12rem, transparent 12.3rem),
+    linear-gradient(135deg, #ffe0ec 0%, #ffd1e8 38%, #ffeff7 100%);
+  color: #6f163d;
+  font-family: "Quicksand", sans-serif;
 }
 
-.container {
-  height: 100vh;
-  margin: 0 auto;
+.background-hearts span {
+  position: fixed;
+  bottom: -8rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: rgba(245, 54, 153, 0.24);
+  transform: rotate(45deg);
+  animation: floatHeart 10s linear infinite;
+}
 
+.background-hearts span::before,
+.background-hearts span::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.background-hearts span::before { left: -50%; }
+.background-hearts span::after { top: -50%; }
+
+.background-hearts span:nth-child(1) { left: 8%; animation-delay: 0s; }
+.background-hearts span:nth-child(2) { left: 18%; animation-delay: 2s; transform: scale(0.7) rotate(45deg); }
+.background-hearts span:nth-child(3) { left: 28%; animation-delay: 4s; }
+.background-hearts span:nth-child(4) { left: 42%; animation-delay: 1s; transform: scale(1.25) rotate(45deg); }
+.background-hearts span:nth-child(5) { left: 53%; animation-delay: 5s; }
+.background-hearts span:nth-child(6) { left: 63%; animation-delay: 3s; transform: scale(0.8) rotate(45deg); }
+.background-hearts span:nth-child(7) { left: 72%; animation-delay: 6s; }
+.background-hearts span:nth-child(8) { left: 81%; animation-delay: 2.5s; transform: scale(1.4) rotate(45deg); }
+.background-hearts span:nth-child(9) { left: 90%; animation-delay: 4.5s; }
+.background-hearts span:nth-child(10) { left: 96%; animation-delay: 1.5s; transform: scale(0.6) rotate(45deg); }
+
+.container {
+  min-height: 100vh;
+  padding: 2.4rem;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.love-card {
+  position: relative;
+  width: min(92vw, 52rem);
+  padding: 3.2rem 2.6rem;
+  border: 0.2rem solid rgba(255, 255, 255, 0.65);
+  border-radius: 3.2rem;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 2.4rem 6rem rgba(226, 42, 124, 0.22);
+  text-align: center;
+  backdrop-filter: blur(18px);
+  animation: popIn 0.8s ease both;
+}
+
+.love-card::before {
+  content: "💌";
+  position: absolute;
+  top: -2.4rem;
+  right: 2.8rem;
+  font-size: 4.8rem;
+  filter: drop-shadow(0 1rem 1.4rem rgba(190, 38, 101, 0.25));
+}
+
+.eyebrow {
+  margin-bottom: 1.4rem;
+  color: #bd2c70;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.image-frame {
+  display: inline-grid;
+  place-items: center;
+  padding: 1.2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff7eb3, #ffd166, #ff4f9a);
+  box-shadow: 0 1.6rem 3.2rem rgba(245, 54, 153, 0.28);
+}
+
 .cat-img {
-  width: 30rem;
-  height: 30rem;
-  margin-bottom: 2rem;
+  display: block;
+  width: min(58vw, 24rem);
+  height: min(58vw, 24rem);
+  border: 0.8rem solid #fff;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .title {
-  font-size: 3.6rem;
-  color: #f53699;
+  margin: 2.4rem 0 2rem;
+  color: #d82176;
+  font-family: "Pacifico", cursive;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  line-height: 1.25;
   text-align: center;
-  margin-bottom: 2rem;
+  text-shadow: 0 0.4rem 0 rgba(255, 255, 255, 0.85);
+}
+
+.title span {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #7d1b48;
+  font-family: "Quicksand", sans-serif;
+  font-size: clamp(1.7rem, 3.8vw, 2.35rem);
+  font-weight: 700;
 }
 
 .buttons {
@@ -41,30 +136,55 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .btn {
-  padding: 1.5rem 2.5rem;
+  min-width: 15rem;
+  padding: 1.5rem 2.4rem;
   border: none;
-  border-radius: 4px;
-
-  color: white;
-  font-size: 1.6rem;
-  font-weight: 600;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 700;
   cursor: pointer;
   display: inline-block;
+  box-shadow: 0 1rem 2rem rgba(111, 22, 61, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-0.3rem) scale(1.03);
+  box-shadow: 0 1.4rem 2.8rem rgba(111, 22, 61, 0.24);
+  filter: saturate(1.08);
 }
 
 .btn--yes {
-  background-color: #40c057;
+  background: linear-gradient(135deg, #24c46b, #00a884);
 }
 
 .btn--no {
-  background-color: #f03e3e;
+  background: linear-gradient(135deg, #ff4d6d, #c9184a);
 }
 
 .hidden {
   display: none;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(2rem) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes floatHeart {
+  0% { opacity: 0; transform: translateY(0) rotate(45deg); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-115vh) rotate(45deg); }
+}
+
+@media (max-width: 520px) {
+  body { overflow: auto; }
+  .container { padding: 1.4rem; }
+  .love-card { padding: 2.4rem 1.6rem; border-radius: 2.4rem; }
+  .btn { width: 100%; }
 }
